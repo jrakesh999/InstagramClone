@@ -1,4 +1,4 @@
-import {FlatList, ViewabilityConfig, ViewToken} from 'react-native';
+import {FlatList, View, ViewabilityConfig, ViewToken} from 'react-native';
 import React, {useRef, useState} from 'react';
 import FeedPost from '../../components/FeedPost';
 import posts from '../../assets/data/posts.json';
@@ -17,16 +17,18 @@ const HomeScreen = () => {
     },
   );
   return (
-    <FlatList
-      data={posts}
-      renderItem={({item}) => (
-        <FeedPost post={item} isVisible={activePostId === item.id} />
-      )}
-      keyExtractor={item => item.id}
-      showsVerticalScrollIndicator={false}
-      viewabilityConfig={viewabilityConfig}
-      onViewableItemsChanged={onViewableItemsChanged.current}
-    />
+    <View>
+      <FlatList
+        data={posts}
+        renderItem={({item}) => (
+          <FeedPost post={item} isVisible={activePostId === item.id} />
+        )}
+        keyExtractor={item => item.id}
+        showsVerticalScrollIndicator={false}
+        viewabilityConfig={viewabilityConfig}
+        onViewableItemsChanged={onViewableItemsChanged.current}
+      />
+    </View>
   );
 };
 

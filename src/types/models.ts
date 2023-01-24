@@ -16,7 +16,7 @@ export interface IUser {
   username: string;
   image?: string;
   name: string;
-  bio?: string;
+  bio: string;
   posts?: IPost[];
   subsite?: string;
 }

@@ -1,19 +1,8 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
-import CommentsScreen from './src/screens/CommentsScreen';
-import HomeScreen from './src/screens/HomeScreen/HomeScreen';
+import Navigation from './src/navigation';
 
 const App = () => {
-  return (
-    <View style={styles.app}>
-      {/* <HomeScreen /> */}
-      <CommentsScreen />
-    </View>
-  );
+  return <Navigation />;
 };
 
 export default App;
-
-const styles = StyleSheet.create({
-  app: {flex: 1},
-});
