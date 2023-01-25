@@ -2,7 +2,8 @@ import {NavigationContainer} from '@react-navigation/native';
 import HomeScreen from '../screens/HomeScreen/HomeScreen';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import ProfileScreen from '../screens/ProfileScreen';
-import {Text, View} from 'react-native';
+import {Image} from 'react-native';
+import logo from '../assets/images/logo.png';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,7 +16,7 @@ const Navigation = () => {
         <Stack.Screen
           name="Feed"
           component={HomeScreen}
-          options={{header: Header}}
+          options={{header: HeaderTitle, headerTitleAlign: 'center'}}
         />
         <Stack.Screen
           name="UserProfile"
@@ -27,11 +28,13 @@ const Navigation = () => {
   );
 };
 
-const Header = () => {
+const HeaderTitle = () => {
   return (
-    <View>
-      <Text>Custom Header</Text>
-    </View>
+    <Image
+      source={logo}
+      resizeMode="contain"
+      style={{width: 150, height: 40}}
+    />
   );
 };
 

@@ -5,6 +5,7 @@ import posts from '../../assets/data/posts.json';
 
 const HomeScreen = () => {
   const [activePostId, setActivePostId] = useState<string | null>(null);
+
   let viewabilityConfig: ViewabilityConfig = {
     itemVisiblePercentThreshold: 51,
   };
