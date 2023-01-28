@@ -1,4 +1,4 @@
-import {NavigationContainer} from '@react-navigation/native';
+import {LinkingOptions, NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import CommentsScreen from '../screens/CommentsScreen';
 import BottomTabNavigator from './BottomTabNavigator';
@@ -6,9 +6,30 @@ import {RootNavigatorParamList} from './types';
 
 const Stack = createNativeStackNavigator<RootNavigatorParamList>();
 
+const linking: LinkingOptions<RootNavigatorParamList> = {
+  prefixes: ['instagram://', 'https://example.com'],
+  config: {
+    initialRouteName: 'Home',
+    screens: {
+      Comments: 'comments', // instagram://comments,
+      // instagram://user/123
+      Home: {
+        screens: {
+          HomeStack: {
+            initialRouteName: 'Feed',
+            screens: {
+              UserProfile: 'user/:userId',
+            },
+          },
+        },
+      },
+    },
+  },
+};
+
 const Navigation = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer linking={linking}>
       <Stack.Navigator
         initialRouteName="Home"
         screenOptions={{headerShown: true}}>
@@ -17,11 +38,7 @@ const Navigation = () => {
           component={BottomTabNavigator}
           options={{headerShown: false}}
         />
-        <Stack.Screen
-          name="Comments"
-          component={CommentsScreen}
-          options={{title: 'Profile'}}
-        />
+        <Stack.Screen name="Comments" component={CommentsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
