@@ -17,7 +17,6 @@ const ProfileScreen = () => {
   >();
   const routes = useRoute<MyProfileRouteProp | UserProfileRouteProp>();
   const userId = routes.params?.userId;
-  console.warn(userId);
   // Query the user with userID
 
   return <FeedGridView data={user.posts} ListHeaderComponent={ProfileHeader} />;
